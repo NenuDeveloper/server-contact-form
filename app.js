@@ -5,11 +5,13 @@ var logger = require('morgan');
 
 var app = express();
 
+process.env.PWD = process.cwd();
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(process.env.PWD + '/public'));
 
 var reCAPTCHA = require('recaptcha2');
 
@@ -19,7 +21,7 @@ var recaptcha = new reCAPTCHA({
 })
 
 app.get('/', (req, res, next) => {
-    next();
+    res.sendFile(process.env.PWD + '/public/index.html');
 });
 
 app.post('/', (req, res) => {
