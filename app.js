@@ -18,8 +18,8 @@ var recaptcha = new reCAPTCHA({
   secretKey: '6LeQEI0UAAAAAAlDXSfb7iPN5plL9wHYF3n9C4Z8'
 })
 
-app.get('/', (req, res) => {
-    res.sendFile(express.static(path.join(__dirname, 'public', 'index.html')));
+app.get('/', (req, res, next) => {
+    res.sendFile("public/index.html", {"root": __dirname});
 });
 
 app.post('/', (req, res) => {
