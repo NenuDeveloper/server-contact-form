@@ -16,7 +16,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 
 app.get('*', (req, res) => {
-    res.status(404).type('text').send('Not Found');
+    res.type('text').send('Not Found');
 })
 
 module.exports = app;
