@@ -11,7 +11,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(express.static(process.env.PWD + '/public'));
+app.use(express.static(path.join(__dirname, '../app/public')));
 
 var reCAPTCHA = require('recaptcha2');
 
@@ -21,7 +21,7 @@ var recaptcha = new reCAPTCHA({
 })
 
 app.get('/', (req, res, next) => {
-    res.sendFile(process.env.PWD + '/public/index.html');
+    res.sendFile(path.join(__dirname, '../app/public/index.html'));
 });
 
 app.post('/', (req, res) => {
