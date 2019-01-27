@@ -19,7 +19,8 @@ var recaptcha = new reCAPTCHA({
 })
 
 app.get('/', (req, res, next) => {
-    res.sendFile("public/index.html", {"root": __dirname});
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    next();
 });
 
 app.post('/', (req, res) => {
