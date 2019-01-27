@@ -19,7 +19,7 @@ var recaptcha = new reCAPTCHA({
 })
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendFile(__dirname + '/public/index.html');
 });
 
 app.post('/', (req, res) => {
